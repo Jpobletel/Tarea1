@@ -7,7 +7,7 @@ namespace Tarea1;
 
 public class PilaCartas
 {
-    private List<Superstar> _superstars;
+    private List<Superstar> _superstars = new List<Superstar>();
 
     public PilaCartas()
     {
