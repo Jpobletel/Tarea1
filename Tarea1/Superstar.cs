@@ -1,20 +1,24 @@
-﻿using Newtonsoft.Json;
-
-namespace Tarea1;
+﻿namespace Tarea1;
 
 public class Superstar
 {
-    [JsonProperty("name")]
-    public string Name { get; set; } 
+    private string _name { get; }
+    private int _handSize { get; }
+    private int _starValue { get; }
+    private string _superStarAbility { get; }
 
-    [JsonProperty("HandSize")]
-    public int HandSize { get; set; }
-
-    [JsonProperty("StarValue")]
-    public int StarValue { get; set; }
-
-    [JsonProperty("SuperStarAbility")]
-    public string SuperStarAbility { get; set; }
+    public Superstar(string name, int HandSize, int StarValue, string SuperStarAbility)
+    {
+        _name = name;
+        _handSize = HandSize;
+        _starValue = StarValue;
+        _superStarAbility = SuperStarAbility;
+    }
+    public string GetName () // Getter
+        {
+            return _name;
+        }
+    
+    
     
 }
-
