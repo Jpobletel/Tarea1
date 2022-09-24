@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Newtonsoft.Json;
+﻿using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace Tarea1;
@@ -7,11 +6,12 @@ namespace Tarea1;
 
 public class PilaCartas
 {
-    private List<Superstar> _superstars = new List<Superstar>();
+    private readonly List<Superstar> _superstars = new List<Superstar>();
 
     public PilaCartas()
     {
         GenerarSuperstars();
+        GenerarCartas();
     }
 
     private void GenerarSuperstars()
@@ -37,11 +37,17 @@ public class PilaCartas
         _superstars.Add(new Superstar("CHRISJERICHO", 7, 3,
             "Once during your turn, you may discard a card from your hand to force your opponent to discard a card from his hand."));
 
-        foreach (var VARIABLE in _superstars)
+        foreach (var x in _superstars)
         {
-            Console.WriteLine(VARIABLE.GetName());
+            Console.WriteLine(x.GetName());
         }
-
     }
 
+    private void GenerarCartas()
+    {
+        string fileName = "cards.json";
+        string jsonString = File.ReadAllText(fileName);
+        List<Carta> cartaList = JsonSerializer.Deserialize<List<Carta>>(jsonString);
+        Console.WriteLine(cartaList);
+    }
 }
