@@ -4,6 +4,6 @@ public class Juego
 {
     public void Jugar()
     {
-        PilaCartas hola = new PilaCartas();
+        Jugadores hola = new Jugadores();
     }
 }

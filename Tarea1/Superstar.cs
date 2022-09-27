@@ -2,23 +2,16 @@
 
 public class Superstar
 {
-    private string _name { get; }
-    private int _handSize { get; }
-    private int _starValue { get; }
-    private string _superStarAbility { get; }
+    public string name;
+    public int handSize;
+    public int starValue;
+    public string superStarAbility;
 
-    public Superstar(string name, int HandSize, int StarValue, string SuperStarAbility)
+    public Superstar(string namee, int HandSize, int StarValue, string SuperStarAbility)
     {
-        _name = name;
-        _handSize = HandSize;
-        _starValue = StarValue;
-        _superStarAbility = SuperStarAbility;
+        name = namee;
+        handSize = HandSize;
+        starValue = StarValue;
+        superStarAbility = SuperStarAbility;
     }
-    public string GetName () // Getter
-        {
-            return _name;
-        }
-    
-    
-    
 }
