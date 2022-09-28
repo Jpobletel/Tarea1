@@ -4,6 +4,8 @@ public class Juego
 {
     public void Jugar()
     {
-        Jugadores hola = new Jugadores();
+        Turnos juego = new Turnos();
+        juego.iniciarJuego();
+
     }
 }

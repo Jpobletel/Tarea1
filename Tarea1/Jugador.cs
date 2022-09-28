@@ -6,6 +6,9 @@ public class Jugador
 {
     public List<Carta> baraja = new List<Carta>();
     public List<Carta> mano = new List<Carta>();
+    public List<Carta> ringSide = new List<Carta>();
+    public List<Carta> ringArea = new List<Carta>();
+    public int fortitude = 0;
     public Superstar miSuperstar;
     static Random rnd = new Random();
     public void AgregarSuperstar(List<Superstar> x)
@@ -64,9 +67,12 @@ public class Jugador
 
     public void repartirMano()
     {
-        int r = rnd.Next(baraja.Count);
-        AgregarCartaAMano(baraja[r]);
-        baraja.RemoveAt(r);
+        for (int i = 0; i < miSuperstar.handSize; i++)
+        {
+            int r = rnd.Next(baraja.Count);
+            AgregarCartaAMano(baraja[r]);
+            baraja.RemoveAt(r);
+        }
 
     }
     

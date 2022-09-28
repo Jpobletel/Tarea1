@@ -23,12 +23,28 @@ public class Jugadores
         foreach (var j in jugadores)
         {
             j.AgregarSuperstar(cartas.superstars);
-            //j.AgregarMazoPredeterminado(cartas.cartaList);
-            //j.repartirMano();
-            //j.MostrarMano();
+            j.AgregarMazoPredeterminado(cartas.cartaList);
+            j.repartirMano();
         }
         
     }
 
-    public Jugador ObtenerJugador(int idJugador) => jugadores[idJugador];
+    public string QuienParte()
+    {
+        int numBase = 0;
+        string parte = "empate, parte j1";
+        int i = 1;
+        foreach (var j in jugadores)
+        {
+            if (j.miSuperstar.starValue >= numBase)
+            {
+                numBase = j.miSuperstar.starValue;
+                parte = "j" + i;
+            }
+            i++;
+        }
+
+        return parte;
+    }
+        
 }
