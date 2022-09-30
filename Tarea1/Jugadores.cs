@@ -36,7 +36,7 @@ public class Jugadores
         int i = 1;
         foreach (var j in jugadores)
         {
-            if (j.miSuperstar.starValue >= numBase)
+            if (j.miSuperstar.starValue > numBase)
             {
                 numBase = j.miSuperstar.starValue;
                 parte = "j" + i;

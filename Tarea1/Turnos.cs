@@ -1,4 +1,6 @@
-﻿namespace Tarea1;
+﻿using System.Security.Cryptography;
+
+namespace Tarea1;
 
 public class Turnos
 {
@@ -10,6 +12,7 @@ public class Turnos
         string parte = jugadorLista.QuienParte();
         Console.WriteLine("Partira el jugador:" + parte);
         bool partidor = true;
+        int que = 0;
         while (!gano)
         {
             if (partidor)
@@ -20,20 +23,31 @@ public class Turnos
                     foreach (var x in jugadorLista.jugadores)
 
                     {
-                        Console.WriteLine("turnos");
+                        Console.WriteLine("partio el j1");
+                        mostrarArea(jugadorLista.jugadores);
+                        x.MostrarMano();
                     }
                 }
                 else
                 {
+                    Console.WriteLine("partio el j2");
                     partidor = false;
-                    Console.WriteLine("Aqui juega el jugadorLista.jugadores[1]");
+                    mostrarArea(jugadorLista.jugadores);
+                    jugadorLista.jugadores[1].MostrarMano();
                 }
             }
-
-            foreach (var x in jugadorLista.jugadores)
+            foreach (var player in jugadorLista.jugadores)
             {
-                Console.WriteLine("turnos");
+                mostrarArea(jugadorLista.jugadores);
             }
+
+            if (que == 10)
+            {
+                Console.WriteLine("termino");
+                gano = true;
+            }
+
+            que++;
         }
     }
 
@@ -41,9 +55,13 @@ public class Turnos
     {
         foreach (var player in jugadores)
         {
-            foreach (var VARIABLE in player.ringArea)
+            if (player.ringArea.Count)
             {
                 
+            }
+            Console.WriteLine("hola");
+            foreach (var s in player.ringArea)
+            {
             }
         }
     }
