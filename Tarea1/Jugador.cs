@@ -25,14 +25,18 @@ public class Jugador
 
         Console.WriteLine("Elige a uno de los siguientes jugadores:");
         Console.WriteLine("[0] = STONECOLD || [1] = THEUNDERTAKER || [2] = MANKING || [3] = HHH || [4] = THEROCK || [5] = KANE || [6] = CHRISJERICHO");
-        int inputUsuario = Convert.ToInt32(Console.ReadLine());
-        while (inputUsuario < 0 || inputUsuario > 6)
+        string input = Console.ReadLine();
+        bool isNumerical = false;
+        int inputInt;
+        isNumerical = int.TryParse(input, out inputInt);
+        while (inputInt < 0 || inputInt > 6 || !isNumerical)
         {
             Console.WriteLine("Bruh elige un numero valido");
-            inputUsuario = Convert.ToInt32(Console.ReadLine());
+            input = Console.ReadLine();
+            isNumerical = int.TryParse(input, out inputInt);
         }
 
-        miSuperstar = x[inputUsuario];
+        miSuperstar = x[inputInt];
         
         Console.WriteLine("Mi SuperStar es: " + miSuperstar.name);
 
@@ -81,24 +85,53 @@ public class Jugador
         mano.Add(x);
     }
 
-    public void SacarCartaDeMano(Carta x)
+    public void AgregarCartaArea(Carta x)
     {
+        ringArea.Add(x);
         mano.Remove(x);
     }
 
     public void MostrarMano()
     {
         Console.WriteLine("Esta es su mano:");
+        int i = 0;
         foreach (var x in mano)
         {
-            Console.WriteLine(x.Title);
-            Console.WriteLine(x.Types);
-            Console.WriteLine(x.Subtypes);
-            Console.WriteLine(x.Fortitude);
-            Console.WriteLine(x.Damage);
-            Console.WriteLine(x.StunValue);
-            Console.WriteLine(x.CardEffect);
+            Console.WriteLine("[" + i + "]"+"Title: " + x.Title);
+            Console.WriteLine("Types: ");
+            foreach (var tipo in x.Types)
+            {
+                Console.WriteLine("     " + tipo);
+            }
+
+            Console.WriteLine("Subtypes: ");
+            foreach (var subtipo in x.Subtypes)
+            {
+                Console.WriteLine("     " + subtipo);
+            }
+
+            Console.WriteLine("Fortitude: " + x.Fortitude);
+            Console.WriteLine("Damage: " + x.Damage);
+            Console.WriteLine("StunValue: " + x.StunValue);
+            Console.WriteLine("CardEffect:" + x.CardEffect);
+            Console.WriteLine("----------------------------------");
+            i++;
         }
     }
 
+    public void calcularFortitude()
+    {
+        fortitude = 0;
+        foreach (var carta in ringArea)
+        {
+            fortitude =+ Convert.ToInt32(carta.Damage);
+        }
+    }
+
+    public void robarCarta()
+    {
+        int r = rnd.Next(baraja.Count);
+        AgregarCartaAMano(baraja[r]);
+        baraja.RemoveAt(r);
+    }
 }
